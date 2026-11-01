@@ -1,1 +1,15 @@
-
+{
+    "sam2_dir": "",
+    "sam2_default": "Base+",
+    "sam2_models": {
+        "Large": ["sam2_hiera_large.pt", "sam2_hiera_l.yaml"],
+        "Base+": ["sam2_hiera_base_plus.pt", "sam2_hiera_b+.yaml"],
+        "Small": ["sam2_hiera_small.pt", "sam2_hiera_s.yaml"],
+        "Tiny": ["sam2_hiera_tiny.pt", "sam2_hiera_t.yaml"],
+    },
+    "yolo_person": "yolov8x.pt",
+    "yolo_face": "",
+    "east_model": "",
+    "output_dir": "",
+    "recent_files": [],
+}
