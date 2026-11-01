@@ -232,7 +232,7 @@ These components keep their own licences. The licence below covers only this pro
 
 ## License
 
-This work is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0/).
+Released under the [MIT License](LICENSE). © 2026 Shuvro Basu
 
 You are free to **share** — copy and redistribute the material in any medium or format, for any purpose, even commercially — under these terms:
 
