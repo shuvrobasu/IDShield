@@ -2189,7 +2189,7 @@ class IdentityShieldApp:
 
     def open_pdf(self, path=None):
         if fitz is None:
-            messagebox.showerror("PDF support unavailable", "Install it with: sudo apt install -y python3-fitz")
+            messagebox.showerror("PDF support unavailable", "Install it with: pip install pymupdf")
             return
         if path is None:
             path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
