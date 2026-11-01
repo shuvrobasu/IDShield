@@ -39,6 +39,7 @@ IdentityShield Pro finds the people for you, lets you choose exactly who gets re
 <img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/a899217d-a61c-429a-9dc9-98dd0846861f" />
 <img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/00c29058-ae9e-45b7-a79b-9a94c0f9915b" />
 (Yes face redact works on imgs in PDF too!)
+<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/fe9eb311-1f0d-468a-890a-f7031ae91b1f" />
 
 
 
