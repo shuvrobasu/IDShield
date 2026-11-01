@@ -18,7 +18,7 @@ IdentityShield Pro finds the people for you, lets you choose exactly who gets re
 
 ## Highlights
 
-- **Auto-Detect faces** — including tilted and profile faces, with an adjustable sensitivity slider.
+- **Auto-Detect faces** — with an adjustable sensitivity slider.
 - **Detect People** — finds every person in the photo and shows each one as a thumbnail.
   - Redact the **face**, the whole **body**, or **remove the person** and fill in the background.
   - Save every person as a transparent PNG cut-out, or save all of them as a single humans-only image.
