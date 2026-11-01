@@ -4,10 +4,9 @@
 
 **A desktop privacy tool for redacting faces, bodies and text in images and PDFs — with AI person detection, one-click selective redaction, and clean person removal.**
 
-Built with Python and Tkinter. Runs entirely on your own machine: nothing is uploaded anywhere.
+Built with Python and Tkinter. Your images never leave your machine; model files are downloaded once on first use.
 
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/eb71b01b-e40a-4d74-9d5e-438d27ad56ff" />
-
+<img width="1920" height="1040" alt="IdentityShield Pro main window" src="https://github.com/user-attachments/assets/eb71b01b-e40a-4d74-9d5e-438d27ad56ff" />
 
 ---
 
@@ -29,22 +28,34 @@ IdentityShield Pro finds the people for you, lets you choose exactly who gets re
 - **Remove Background** and **Remove Text** tools.
 - **Batch mode** — detect and export a whole folder.
 - **Everything configurable** — model files and folders are set in a Settings dialog, nothing is hard-coded.
-- **Recent Files** menu and **hover tooltips** on every control.
+- **Recent Files** menu and **hover tooltips** on the main controls.
+- **Lightweight core** — the manual redaction tools need only OpenCV, NumPy and Pillow; everything else is optional.
 
-<img width="1002" height="812" alt="image" src="https://github.com/user-attachments/assets/62e068f9-401d-477d-b7ba-3ab6357bfa35" />
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/f625e29f-c098-4869-9f81-d5fcddf965e0" />
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/e0c0da5d-c7de-4367-b25d-db8f322ad1c9" />
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/5f7b492c-b196-4d1f-90fb-5502aa78185a" />
+---
 
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/a899217d-a61c-429a-9dc9-98dd0846861f" />
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/00c29058-ae9e-45b7-a79b-9a94c0f9915b" />
-(Yes face redact works on imgs in PDF too!)
-<img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/fe9eb311-1f0d-468a-890a-f7031ae91b1f" />
+## Screenshots
 
+### Detect People
 
+<img width="1002" height="812" alt="Detect People results window with cut-outs and thumbnail strip" src="https://github.com/user-attachments/assets/62e068f9-401d-477d-b7ba-3ab6357bfa35" />
 
+### Selective redaction and person removal
 
+<img width="1920" height="1040" alt="Selective redaction example 1" src="https://github.com/user-attachments/assets/f625e29f-c098-4869-9f81-d5fcddf965e0" />
 
+<img width="1920" height="1040" alt="Selective redaction example 2" src="https://github.com/user-attachments/assets/e0c0da5d-c7de-4367-b25d-db8f322ad1c9" />
+
+<img width="1920" height="1040" alt="Selective redaction example 3" src="https://github.com/user-attachments/assets/5f7b492c-b196-4d1f-90fb-5502aa78185a" />
+
+### PDF redaction
+
+Face redaction also works on images inside PDFs.
+
+<img width="1920" height="1040" alt="PDF redaction example 1" src="https://github.com/user-attachments/assets/a899217d-a61c-429a-9dc9-98dd0846861f" />
+
+<img width="1920" height="1040" alt="PDF redaction example 2" src="https://github.com/user-attachments/assets/00c29058-ae9e-45b7-a79b-9a94c0f9915b" />
+
+<img width="1920" height="1040" alt="PDF redaction example 3" src="https://github.com/user-attachments/assets/fe9eb311-1f0d-468a-890a-f7031ae91b1f" />
 
 ---
 
@@ -112,13 +123,30 @@ Rectangle, Polygon (click points, double-click or Enter to finish), Freehand, an
 ```bash
 git clone https://github.com/shuvrobasu/idshield.git
 cd idshield
+```
 
-pip install opencv-python numpy pillow pymupdf
+**Core** — the manual redaction tools, mask styles, crop, zoom, undo/redo, and image open/save/export:
+
+```bash
+pip install opencv-python numpy pillow
+```
+
+Everything below is optional. Install only what you need.
+
+**PDF support:**
+
+```bash
+pip install pymupdf
+```
+
+**Face detection and Detect People:**
+
+```bash
 pip install torch torchvision          # pick the build matching your CUDA version: https://pytorch.org
 pip install ultralytics
 ```
 
-Install **SAM 2** (needed for Detect People):
+Detect People also needs **SAM 2**:
 
 ```bash
 git clone https://github.com/facebookresearch/sam2.git
@@ -126,7 +154,7 @@ cd sam2
 pip install -e .
 ```
 
-Optional extras:
+**Other extras:**
 
 ```bash
 pip install rembg                                  # better Remove Background
@@ -139,7 +167,7 @@ pip install simple-lama-inpainting --no-deps       # clean Remove Person fills
 Run it:
 
 ```bash
-python all_mosaic.py
+python idsheild.py
 ```
 
 ### Model files
@@ -163,11 +191,7 @@ Open **⚙ Settings** (left panel, or *File → Settings*) and point the app at 
 
 Everything is saved to `settings.sec` (plain JSON) next to the script. Nothing is hard-coded, and missing values fall back to safe defaults. Changes apply immediately, with no restart.
 
-Add `settings.sec` to your `.gitignore` — it contains paths from your machine:
-
-```
-settings.sec
-```
+`settings.sec` is created on first save and is git-ignored, since it contains paths from your machine.
 
 ---
 
@@ -226,17 +250,12 @@ photo ──► YOLOv8 finds person boxes
 | [SAM 2](https://github.com/facebookresearch/sam2) | Apache-2.0 |
 | [LaMa / simple-lama-inpainting](https://github.com/enesmsahin/simple-lama-inpainting) | Apache-2.0 |
 | [OpenCV](https://opencv.org) | Apache-2.0 |
+| [rembg](https://github.com/danielgatis/rembg) (optional) | MIT |
+| [EasyOCR](https://github.com/JaidedAI/EasyOCR) (optional) | Apache-2.0 |
 | [yolo-face weights](https://github.com/akanametov/yolo-face) | Check the repository's licence before redistributing |
 
-These components keep their own licences. The licence below covers only this project's own code and documentation, not them.
+These components keep their own licences. This project's own code is MIT. Ultralytics and PyMuPDF are AGPL-3.0, so a build you distribute that includes them must also comply with the AGPL.
 
 ## License
 
 Released under the [MIT License](LICENSE). © 2026 Shuvro Basu
-
-You are free to **share** — copy and redistribute the material in any medium or format, for any purpose, even commercially — under these terms:
-
-- **Attribution** — you must give appropriate credit, provide a link to the licence, and indicate if changes were made.
-- **NoDerivatives** — if you remix, transform, or build upon the material, you may not distribute the modified material.
-
-© Shuvro Basu
